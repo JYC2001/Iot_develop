@@ -1,0 +1,29 @@
+server:
+  port: 8081 # Java 应用自身的端口
+
+spring:
+  application:
+    name: IotBackend
+
+# --- 关键修改部分 ---
+
+# MQTT 配置
+# 对应 docker-compose.yml 中的 emqx 服务
+mqtt:
+  # 端口 1883 已映射到宿主机，所以用 localhost
+  url: tcp://localhost:1883
+  # 对应 Python 代码中的 TOPIC = "env/monitor/data"
+  topic: env/monitor/data
+  # 对应 docker-compose.yml 中 emqx 的环境变量
+  username: admin
+  password: public
+
+# InfluxDB 配置
+# 对应 docker-compose.yml 中的 influxdb 服务
+influx:
+  # 端口 8086 已映射到宿主机，所以用 localhost
+  url: http://localhost:8086
+  # 对应 docker-compose.yml 中 influxdb 的环境变量
+  token: mEAZ0p4mFmKJ0eFN_u0YQ6qMBojkVP4hRgGLatqFASBR-3calYQ5fKq29qMZgwMEuJJbd0CFclLsJFsAMwuPcQ==
+  org: myorg
+  bucket: iot_bucket
