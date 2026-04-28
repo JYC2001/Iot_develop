@@ -28,3 +28,9 @@ git push origin --delete master：**删除远程的 `master` 分支**
 git remote -v查看当前关联的远程仓库信息
 
 git push -u origin main/dev：推送到远程仓库
+
+git tag ：查看所有版本号
+
+git merge --abort：回到安全
+
+git push origin 标签名：给远程仓库发送标签
