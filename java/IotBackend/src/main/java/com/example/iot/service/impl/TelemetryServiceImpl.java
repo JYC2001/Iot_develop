@@ -31,6 +31,6 @@ public class TelemetryServiceImpl implements TelemetryService {
 
         // 2. 存储数据
         log.info("💾 正在保存数据: {} -> {}", deviceId, data);
-        influxRepository.saveTelemetry(deviceId, data);
+        influxRepository.saveTelemetryAsync(deviceId, data);
     }
 }
