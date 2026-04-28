@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package com.example.iot.proto;
+
+option java_package = "com.example.iot.proto";
+option java_outer_classname = "SensorProtos";
+
+message SensorData {
+  string device_id = 1;
+  int64 timestamp = 2;
+  Metrics metrics = 3;
+
+  message Metrics {
+    float temperature = 1;
+    float humidity = 2;
+  }
+}

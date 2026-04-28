@@ -27,10 +27,10 @@ if __name__ == "__main__":
     client.on_connect = on_connect
     # 发起连接
     client.connect(MQTT_BROKER, MQTT_PORT, 60)
-    
+
     # 【关键修改】启动网络循环，并等待连接成功
-    client.loop_start() 
-    
+    client.loop_start()
+
     print("⏳ 正在等待连接...")
     # 死循环等待，直到 connected 变为 True
     while not connected:
@@ -57,14 +57,14 @@ if __name__ == "__main__":
             # 3. 发送数据
             # retain=False, qos=0
             result = client.publish(TOPIC, json.dumps(payload))
-            
+
             # 检查发送状态
             if result.rc == 0:
                 print(f"📤 发送成功: 温度 {temp}, 湿度 {hum}")
             else:
                 print(f"⚠️ 发送失败: {result.rc}")
 
-            time.sleep(2)
+            time.sleep(0.01)
             
     except KeyboardInterrupt:
         print("\n🛑 模拟结束")
